@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/login_staff}" method="POST">
+    <div th:if="${param.error}">
+        Invalid username or password
+    </div>
+    <div th:if="${param.logout}">
+        YOu have been logged out successfully.
+    </div>
+    <div>
+        <input type="text" name="username" placeholder="username" autofocus="autofocus"/>
+        <input type="password" name="password" placeholder="password"/>
+    </div>
+    <div>
+        <input type="submit" name="login-submit" value="Login" />
+    </div>
+</form>
+</body>
+</html>

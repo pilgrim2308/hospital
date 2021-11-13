@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/save/outPatient}" th:object="${outPatient}" th:method="POST" >
+    <input type="text" placeholder="First Name" th:field="*{first_name}">
+    <input type="text" th:field="*{last_name}">
+    <input type="text" th:field="*{email}">
+    <input type="password" th:field="*{password}">
+    <input type="text" th:field="*{mobile_no}">
+    <input type="text" th:field="*{age}">
+    <input type="text" th:field="*{gender}">
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
