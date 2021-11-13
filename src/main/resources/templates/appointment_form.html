@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="ISO-8859-1">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<form th:action="@{/requestAppointment/{id}(id=${Doctor.id})}" th:object="${appointment}" th:method="POST">
+    <input type="date" name="date" value="date" >
+<!--    <input type="time" name="time" value="time" >-->
+    <button type="submit">Submit</button>
+</form>
+
 </body>
 </html>

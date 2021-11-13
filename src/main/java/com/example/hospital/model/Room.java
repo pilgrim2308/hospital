@@ -14,6 +14,23 @@ public class Room {
     private long cost;
     private long capacity;
     private long availability;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Room(String type, long cost, long capacity, long availability, String name) {
+        this.type = type;
+        this.cost = cost;
+        this.capacity = capacity;
+        this.availability = availability;
+        this.name = name;
+    }
 
     public Room() {
     }

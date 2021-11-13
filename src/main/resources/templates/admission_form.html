@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="ISO-8859-1">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<form th:action="@{/createAdmission/{id}(id=${patient.id})}" th:object="${appointment}" th:method="POST">
+    <select name="doctor" th:field="*{doctor}">
+        <ul th:each="Doctor : ${list_doctors}">
+            <li th:text="${Doctor.first_name}+${Doctor.last_name}"></li>
+        </ul>
+    </select>
+    <select name="room" th:field="*{room}">
+        <ul th:each="Room : ${list_rooms}">
+            <li th:text="${Room.name}"></li>
+        </ul>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
 </body>
 </html>

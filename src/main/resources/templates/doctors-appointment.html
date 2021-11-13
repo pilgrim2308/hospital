@@ -5,6 +5,10 @@
   <title>Title</title>
 </head>
 <body>
-
+<div th:each="Doctor : ${list_doctors}">
+  <div th:text="${Doctor.first_name}+${Doctor.last_name}"></div>
+  <div th:text="${Doctor.department}"></div>
+  <div><a th:href="@{/requestAppointment/{id}(id=${Doctor.id})}">Request an Appointment</a></div>
+</div>
 </body>
 </html>

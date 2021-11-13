@@ -48,4 +48,11 @@ public class InPatientController {
         this.inPatientService.deleteInPatientById(id);
         return "redirect:/";
     }
+
+    @GetMapping("view/inPatient/{id}")
+    public String viewInPatient(@PathVariable long id,Model model){
+        InPatient inPatient=inPatientService.getInPatientById(id);
+        model.addAttribute("inPatient",inPatient);
+        return "view_inpatient";
+    }
 }
