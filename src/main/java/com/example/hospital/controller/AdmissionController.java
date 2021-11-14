@@ -64,6 +64,8 @@ public class AdmissionController {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         String strDate = dateFormat.format(date);
         InPatient inPatient=admission.getPatient();
+        Room room=admission.getRoom();
+        model.addAttribute("room",room);
         model.addAttribute("admission",admission);
         model.addAttribute("doctor",doctor);
         model.addAttribute("patient",inPatient);

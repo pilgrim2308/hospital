@@ -11,5 +11,8 @@ public class MainController {
         return "login";
     }
 
-
+    @GetMapping("/home/admin")
+    public String homeAdmin(){
+        return "admin_dashboard";
+    }
 }
