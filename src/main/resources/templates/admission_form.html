@@ -5,16 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/createAdmission/{id}(id=${patient.id})}" th:object="${appointment}" th:method="POST">
-    <select name="doctor" th:field="*{doctor}">
-        <ul th:each="Doctor : ${list_doctors}">
-            <li th:text="${Doctor.first_name}+${Doctor.last_name}"></li>
-        </ul>
+<form th:action="@{/createAdmission/{id}(id=${patient.id})}" th:object="${admission}" th:method="POST">
+    <div th:text="${patient.first_name}+' '+${patient.last_name}"></div>
+    <select th:each="Doctor:${listDoctors}" name="doctor">
+        <option th:text="${Doctor.first_name}+' '+${Doctor.last_name}" th:value="${Doctor.id}"></option>
     </select>
-    <select name="room" th:field="*{room}">
-        <ul th:each="Room : ${list_rooms}">
-            <li th:text="${Room.name}"></li>
-        </ul>
+    <select name="room" th:each="Room:${listRooms}" >
+        <option th:text="${Room.type}+${Room.name}" th:value="${Room.id}"></option>
     </select>
     <button type="submit">Submit</button>
 </form>

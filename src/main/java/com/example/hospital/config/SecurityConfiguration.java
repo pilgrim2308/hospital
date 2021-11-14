@@ -27,9 +27,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private OutPatientService outPatientService;
-//    @Autowired
-//    private AdminService adminService;
-//
+
+    @Autowired
+    private AdminService adminService;
+
     @Autowired
     private NurseService nurseService;
 
@@ -52,8 +53,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
         auth.userDetailsService(receptionistService)
                 .passwordEncoder(passwordEncoder());
-//        auth.userDetailsService(adminService)
-//                .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(adminService)
+                .passwordEncoder(passwordEncoder());
         auth.userDetailsService(nurseService)
                 .passwordEncoder(passwordEncoder());
         auth.userDetailsService(inPatientService)

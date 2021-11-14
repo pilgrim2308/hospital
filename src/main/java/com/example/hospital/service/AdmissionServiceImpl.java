@@ -5,6 +5,7 @@ import com.example.hospital.repository.AdmissionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,5 +35,10 @@ public class AdmissionServiceImpl implements AdmissionService{
     @Override
     public void deleteAdmissionById(long id) {
         admissionRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Admission> getAllByPatientId(long id) {
+        return admissionRepository.getAllByPatient_Id(id);
     }
 }

@@ -1,13 +1,7 @@
 package com.example.hospital.controller;
 
-import com.example.hospital.model.Admission;
-import com.example.hospital.model.Doctor;
-import com.example.hospital.model.InPatient;
-import com.example.hospital.model.OutPatient;
-import com.example.hospital.service.AdmissionService;
-import com.example.hospital.service.DoctorService;
-import com.example.hospital.service.InPatientService;
-import com.example.hospital.service.OutPatientService;
+import com.example.hospital.model.*;
+import com.example.hospital.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 @Controller
 public class AdmissionController {
@@ -38,18 +34,40 @@ public class AdmissionController {
         model.addAttribute("patient",inPatient);
         model.addAttribute("admission",admission);
         model.addAttribute("listDoctors",doctorService.getAllDoctors());
+        model.addAttribute("listRooms",roomService.getAllRooms());
+        System.out.println(doctorService.getAllDoctors().size());
+        System.out.println(roomService.getAllRooms().size());
         return "admission_form";
     }
 
     @PostMapping("/createAdmission/{id}")
-    public String createAdmission(@ModelAttribute("admission")Admission admission, @PathVariable long id, Model model){
+    public String createAdmission(@RequestParam("doctor") String doctorId, @RequestParam("room") String roomId, @ModelAttribute("admission")Admission admission, @PathVariable long id, Model model){
+        Doctor doctor=doctorService.getDoctorById(Long.parseLong(doctorId));
+        Room room=roomService.getRoomById(Long.parseLong(roomId));
         InPatient inPatient =inPatientService.getInPatientById(id);
         long now = System.currentTimeMillis();
         Date date = new Date(now);
         admission.setPatient(inPatient);
         admission.setStatus("ADMITTED");
         admission.setAdmission_date(date);
+        admission.setDoctor(doctor);
+        admission.setRoom(room);
         admissionService.save(admission);
         return "redirect:/";
+    }
+
+    @GetMapping("/view/admission/{id}")
+    public String viewAdmission(@PathVariable long id,Model model){
+        Admission admission=admissionService.getAdmissionById(id);
+        Doctor doctor=admission.getDoctor();
+        Date date = (Date) admission.getAdmission_date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        String strDate = dateFormat.format(date);
+        InPatient inPatient=admission.getPatient();
+        model.addAttribute("admission",admission);
+        model.addAttribute("doctor",doctor);
+        model.addAttribute("patient",inPatient);
+        model.addAttribute("date",strDate);
+        return "view_admission";
     }
 }

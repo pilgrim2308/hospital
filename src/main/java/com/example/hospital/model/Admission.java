@@ -25,6 +25,7 @@ public class Admission {
         this.room = room;
     }
 
+
     public Admission(InPatient patient, Doctor doctor, Room room, String status, Date admission_date, Date discharge_date) {
         this.patient = patient;
         this.doctor = doctor;

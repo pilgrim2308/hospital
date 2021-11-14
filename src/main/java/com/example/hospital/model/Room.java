@@ -1,9 +1,8 @@
 package com.example.hospital.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.stereotype.Controller;
+
+import javax.persistence.*;
 
 @Entity
 public class Room {
@@ -14,6 +13,7 @@ public class Room {
     private long cost;
     private long capacity;
     private long availability;
+    @Column(unique = true)
     private String name;
 
     public String getName() {
