@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Create Bill</title>
+</head>
+<body>
+<form id="duplicateit" th:action="@{/save/billPatient}" th:object="${billPatient}">
+    <div id="formduplicate" th:each="book, itemStat : *{items}">
+        <select th:each="${charge:listCharges}" th:field="*{items[__${itemStat.index}__].charge}">
+            <option th:text="${charge.description}" th:value="{charge.id}"></option>
+        </select>
+        <input type="text" th:field="*{items[__${itemStat.index}__].qty}>
+    </div>
+</form>
+<button id="addAnother">Add another</button>
+<script type="text/javascript">
+    $("#addAnother").click(function(){
+        $("#formduplicate").clone().appendTo("#duplicateit");
+    });
+</script>
+</body>
+</html>

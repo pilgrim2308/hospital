@@ -9,7 +9,7 @@
 <body style="background-image: url('https://media.istockphoto.com/photos/bed-in-hallway-the-concept-of-working-stressful-environment-picture-id1227177907?b=1&k=20&m=1227177907&s=170667a&w=0&h=gSIg6oegHiWZ0DVjTOK2RbJFl4oFQxSKcPowmvfiiGk=');background-repeat: no-repeat;background-attachment: fixed;
   background-size: cover;">
 <div>
-    <form th:action="@{/login_staff}" method="POST">
+    <form th:action="@{/login}" method="POST">
         <div style="margin-left:425px;">
             <div th:if="${param.error}" style="background-color: rgb(224, 77, 77); padding: 5px;display: inline;">
                 Invalid username or password.
