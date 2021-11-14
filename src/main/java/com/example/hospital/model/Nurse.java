@@ -10,7 +10,6 @@ public class Nurse extends User{
     private String designation;
     private String department;
 
-
     public Nurse() {
     }
 

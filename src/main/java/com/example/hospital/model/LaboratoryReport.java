@@ -20,8 +20,6 @@ public class LaboratoryReport {
     @JoinColumn(name = "outpatient_id", nullable = true)
     private OutPatient outPatient;
 
-
-
     public LaboratoryReport(Doctor doctor, InPatient inpatient, OutPatient outPatient) {
         this.doctor = doctor;
         this.inpatient = inpatient;
