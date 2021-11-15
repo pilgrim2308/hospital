@@ -33,7 +33,7 @@ public class NurseController {
     @PostMapping("/save/nurse")
     public String saveNurse(@ModelAttribute("nurse") UserRegistrationDto registrationDto) {
         nurseService.save(registrationDto);
-        return "redirect:/";
+        return "redirect:/home/admin";
     }
     @GetMapping("/update/nurse/{id}")
     public String showUpdateForm(@PathVariable(value="id") long id, Model model){
@@ -45,6 +45,6 @@ public class NurseController {
     @GetMapping("delete/nurse/{id}")
     public String deleteNurse(@PathVariable(value="id") long id){
         this.nurseService.deleteNurseById(id);
-        return "redirect:/";
+        return "redirect:/home/admin";
     }
 }

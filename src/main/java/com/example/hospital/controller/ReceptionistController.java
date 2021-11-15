@@ -35,7 +35,7 @@ public class ReceptionistController {
     @PostMapping("/save/receptionist")
     public String saveReceptionist(@ModelAttribute("receptionist") UserRegistrationDto registrationDto) {
         receptionistService.save(registrationDto);
-        return "redirect:/";
+        return "redirect:/home/admin";
     }
     @GetMapping("/update/receptionist/{id}")
     public String showUpdateForm(@PathVariable(value="id") long id, Model model){
@@ -47,6 +47,6 @@ public class ReceptionistController {
     @GetMapping("delete/receptionist/{id}")
     public String deleteReceptionist(@PathVariable(value="id") long id){
         this.receptionistService.deleteReceptionistById(id);
-        return "redirect:/";
+        return "redirect:/home/admin";
     }
 }

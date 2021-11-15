@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface AdmissionRepository extends JpaRepository<Admission,Long> {
     List<Admission> getAllByPatient_Id(long id);
+    List<Admission> getAllByStatusEquals(String status);
 }

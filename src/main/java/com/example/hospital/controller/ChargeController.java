@@ -25,7 +25,7 @@ public class ChargeController {
     @PostMapping("/save/charge")
     public String saveCharge(@ModelAttribute("charge") Charge charge) {
         chargeService.save(charge);
-        return "redirect:/";
+        return "redirect:/home/admin";
     }
     @GetMapping("/update/charge/{id}")
     public String showUpdateForm(@PathVariable(value="id") long id, Model model){
@@ -37,6 +37,6 @@ public class ChargeController {
     @GetMapping("delete/charge/{id}")
     public String deleteCharge(@PathVariable(value="id") long id){
         this.chargeService.deleteChargeById(id);
-        return "redirect:/";
+        return "redirect:/home/admin";
     }
 }

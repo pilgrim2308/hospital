@@ -82,4 +82,5 @@ public class InPatientController {
         model.addAttribute("inPatient",inPatient);
         return "patient_by_patient";
     }
+
 }

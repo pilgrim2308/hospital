@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -14,4 +15,5 @@ public interface InPatientRepository extends JpaRepository <InPatient,Long>{
 
     @Query("Select i from InPatient i where i.mobile_no = ?1")
     Optional<InPatient> findByMobileNo(String mobile_no);
+
 }

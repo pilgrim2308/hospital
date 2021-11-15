@@ -10,7 +10,7 @@ public class Charge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String description;
+    private String description_charge;
     private long cost;
 
     public Long getId() {
@@ -21,12 +21,12 @@ public class Charge {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescription_charge() {
+        return description_charge;
     }
 
-    public void setDesc(String description) {
-        this.description = description;
+    public void setDescription_charge(String description_charge) {
+        this.description_charge = description_charge;
     }
 
     public long getCost() {
@@ -40,8 +40,8 @@ public class Charge {
     public Charge() {
     }
 
-    public Charge(String description, long cost) {
-        this.description = description;
+    public Charge(String description_charge, long cost) {
+        this.description_charge = description_charge;
         this.cost = cost;
     }
 }

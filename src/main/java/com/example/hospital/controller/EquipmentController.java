@@ -24,7 +24,7 @@ public class EquipmentController {
     @PostMapping("/save/equipment")
     public String saveEquipment(@ModelAttribute("equipment") Equipment equipment) {
         equipmentService.save(equipment);
-        return "redirect:/";
+        return "redirect:/home/admin";
     }
     @GetMapping("/update/equipment/{id}")
     public String showUpdateForm(@PathVariable(value="id") long id, Model model){
@@ -36,6 +36,6 @@ public class EquipmentController {
     @GetMapping("delete/equipment/{id}")
     public String deleteEquipment(@PathVariable(value="id") long id){
         this.equipmentService.deleteEquipmentById(id);
-        return "redirect:/";
+        return "redirect:/home/admin";
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @Controller
 public class AdmissionController {
@@ -71,5 +72,12 @@ public class AdmissionController {
         model.addAttribute("patient",inPatient);
         model.addAttribute("date",strDate);
         return "view_admission";
+    }
+
+    @GetMapping("/view/admissionList")
+    public String viewAdmissionList(Model model){
+        List<Admission> listAdmission=admissionService.getAllByStatus("ADMITTED");
+        model.addAttribute("listAdmissions",listAdmission);
+        return "list_admissions";
     }
 }

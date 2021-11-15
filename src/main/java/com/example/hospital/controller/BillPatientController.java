@@ -26,10 +26,16 @@ public class BillPatientController {
     @Autowired
     private ItemRepository itemRepository;
 
+    @Autowired
+    private ChargeService chargeService;
+
     @GetMapping("/create/billPatient")
     public String showNewBillPatientForm(Model model){
         List<Item> listItems= Collections.<Item>emptyList();
         model.addAttribute("billPatient",new BillPatient());
+        List<Charge> listCharges=chargeService.getAllCharges();
+        model.addAttribute("listCharges",listCharges);
+        System.out.println(listCharges.size());
         return "create_billPatient";
     }
 

@@ -10,4 +10,5 @@ public interface AdmissionService {
     Admission getAdmissionById(long id);
     void deleteAdmissionById(long id);
     List<Admission> getAllByPatientId(long id);
+    List<Admission> getAllByStatus(String string);
 }

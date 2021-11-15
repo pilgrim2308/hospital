@@ -41,4 +41,9 @@ public class AdmissionServiceImpl implements AdmissionService{
     public List<Admission> getAllByPatientId(long id) {
         return admissionRepository.getAllByPatient_Id(id);
     }
+
+    @Override
+    public List<Admission> getAllByStatus(String string) {
+        return admissionRepository.getAllByStatusEquals(string);
+    }
 }
