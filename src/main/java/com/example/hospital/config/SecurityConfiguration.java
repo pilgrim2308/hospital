@@ -1,9 +1,7 @@
 package com.example.hospital.config;
 
 
-import com.example.hospital.service.DoctorService;
-import com.example.hospital.service.NurseService;
-import com.example.hospital.service.ReceptionistService;
+import com.example.hospital.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,10 +21,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private ReceptionistService receptionistService;
-//
-//    @Autowired
-//    private AdminService adminService;
-//
+
+    @Autowired
+    private InPatientService inPatientService;
+
+    @Autowired
+    private OutPatientService outPatientService;
+
+    @Autowired
+    private AdminService adminService;
+
     @Autowired
     private NurseService nurseService;
 
@@ -49,9 +53,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
         auth.userDetailsService(receptionistService)
                 .passwordEncoder(passwordEncoder());
-//        auth.userDetailsService(adminService)
-//                .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(adminService)
+                .passwordEncoder(passwordEncoder());
         auth.userDetailsService(nurseService)
+                .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(inPatientService)
+                .passwordEncoder(passwordEncoder());
+        auth.userDetailsService(outPatientService)
                 .passwordEncoder(passwordEncoder());
 
     }
@@ -66,14 +74,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login_staff")
+                .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login_staff?logout")
+                .logoutSuccessUrl("/login?logout")
                 .permitAll();
     }
 }

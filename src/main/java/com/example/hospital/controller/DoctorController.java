@@ -5,6 +5,8 @@ import com.example.hospital.model.Doctor;
 import com.example.hospital.repository.DoctorRepository;
 import com.example.hospital.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -30,6 +32,9 @@ public class DoctorController {
     @GetMapping("/")
     public String viewHomePage(Model model){
         model.addAttribute("listDoctors",doctorService.getAllDoctors());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth.getPrincipal());
+        System.out.println(auth.getName());
         return "home";
     }
 
@@ -41,7 +46,7 @@ public class DoctorController {
     @PostMapping("/save/doctor")
     public String saveDoctor(@ModelAttribute("doctor") UserRegistrationDto registrationDto) {
         doctorService.save(registrationDto);
-        return "redirect:/";
+        return "redirect:/home/admin";
     }
     @GetMapping("/update/doctor/{id}")
     public String showUpdateForm(@PathVariable(value="id") long id, Model model){
@@ -53,6 +58,12 @@ public class DoctorController {
     @GetMapping("delete/doctor/{id}")
     public String deleteDoctor(@PathVariable(value="id") long id){
         this.doctorService.deleteDoctorById(id);
-        return "redirect:/";
+        return "redirect:/home/admin";
+    }
+
+    @GetMapping("requestAppointment")
+    public String requestAppointment(Model model){
+        model.addAttribute("list_doctors",doctorService.getAllDoctors());
+        return "doctors-appointment";
     }
 }

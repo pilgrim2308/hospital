@@ -17,6 +17,29 @@ public class Admission {
     @JoinColumn(name = "doctor_id",nullable = false)
     private Doctor doctor;
 
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+
+    public Admission(InPatient patient, Doctor doctor, Room room, String status, Date admission_date, Date discharge_date) {
+        this.patient = patient;
+        this.doctor = doctor;
+        this.room = room;
+        this.status = status;
+        this.admission_date = admission_date;
+        this.discharge_date = discharge_date;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "room_id",nullable = true)
+    private Room room;
+
+
     public Long getId() {
         return id;
     }

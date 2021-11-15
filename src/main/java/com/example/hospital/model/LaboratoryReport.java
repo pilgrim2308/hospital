@@ -12,8 +12,6 @@ public class LaboratoryReport {
     @JoinColumn(name="doctor_id", nullable=false)
     private Doctor doctor;
 
-    //Add file field for report
-
     @ManyToOne
     @JoinColumn(name = "inpatient_id", nullable = true)
     private InPatient inpatient;
@@ -27,6 +25,7 @@ public class LaboratoryReport {
         this.inpatient = inpatient;
         this.outPatient = outPatient;
     }
+
 
     public Long getId() {
         return id;

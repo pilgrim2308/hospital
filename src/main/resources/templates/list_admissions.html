@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients Admitted</title>
+</head>
+<body>
+<div th:each="admission:${listAdmissions}">
+  <div th:text="${admission.patient.first_name}+' '+${admission.patient.last_name}"></div>
+    <div th:text="${admission.date}"></div>
+</div>
+</body>
+</html>

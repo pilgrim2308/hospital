@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:text="${inPatient.first_name}"></div>
+<h4>Appointments</h4>
+<ul th:each="{appointment:${appointments}}">
+    <li th:text="${appointment.date}">
+        <a th:href="@{/view/appointment/{id}(id=${appointment.id})">Details</a>
+    </li>
+</ul>
+<h4>Admissions</h4>
+<ul th:each="{admission:${admissions}}">
+    <li th:text="${admission.date}">
+        <a th:href="@{/view/admission/{id}(id=${admission.id})">Details</a>
+    </li>
+</ul>
+</body>
+</html>

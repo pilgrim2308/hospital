@@ -1,7 +1,8 @@
 package com.example.hospital.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Time;
 
 @Entity
 public class Appointment {
@@ -11,11 +12,11 @@ public class Appointment {
     private String summary;
     private String status;
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     private Date appointment_date;
 
-    @Temporal(TemporalType.TIME)
-    private Date appointment_time;
+//    @Temporal(TemporalType.TIME)
+    private Time appointment_time;
 
     @ManyToOne
     @JoinColumn(name="patient_id", nullable=false)
@@ -60,11 +61,11 @@ public class Appointment {
         this.appointment_date = appointment_date;
     }
 
-    public Date getAppointment_time() {
+    public Time getAppointment_time() {
         return appointment_time;
     }
 
-    public void setAppointment_time(Date appointment_time) {
+    public void setAppointment_time(Time appointment_time) {
         this.appointment_time = appointment_time;
     }
 
@@ -84,7 +85,7 @@ public class Appointment {
         this.doctor = doctor;
     }
 
-    public Appointment(String status, Date appointment_date, Date appointment_time, OutPatient patient, Doctor doctor) {
+    public Appointment(String status, Date appointment_date, Time appointment_time, OutPatient patient, Doctor doctor) {
         this.status = status;
         this.appointment_date = appointment_date;
         this.appointment_time = appointment_time;

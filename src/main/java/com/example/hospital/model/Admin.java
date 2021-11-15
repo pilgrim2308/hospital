@@ -12,7 +12,7 @@ public class Admin extends User{
         super(first_name, last_name, email, password, mobile_no, gender, age, roles);
     }
 
-    public Admin(String first_name, String last_name, String email, String password, String mobile_no, String gender, long age) {
-        super(first_name, last_name, email, password, mobile_no, gender, age);
-    }
+//    public Admin(String first_name, String last_name, String email, String password, String mobile_no, String gender, long age) {
+//        super(first_name, last_name, email, password, mobile_no, gender, age);
+//    }
 }
